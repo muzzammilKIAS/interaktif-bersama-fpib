@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "Arabic Chess Quick Challenge",
+  "short_name": "Arabic Chess",
+  "description": "Cabaran catur dan bahasa Arab selama 10 minit. Lawan AI atau dua pemain pada satu peranti.",
+  "lang": "ms",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f6f0",
+  "theme_color": "#102f29",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

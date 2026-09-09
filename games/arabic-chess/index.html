@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102f29">
+  <meta name="description" content="Main catur melawan AI atau dua pemain. Tawan buah lawan dan jawab cabaran bahasa Arab dalam sesi 10 minit.">
+  <title>Arabic Chess • Quick Challenge</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header><a class="brand" href="./"><span class="brand-icon" aria-hidden="true"><img src="favicon.svg" alt="" width="46" height="46"></span><span>ARABIC CHESS<small>THE QUICK CHALLENGE</small></span></a><div class="tools"><button id="install" aria-expanded="false" aria-controls="install-help">Pasang app <span aria-hidden="true">↗</span></button><button id="sound" aria-label="Hidupkan bunyi" aria-pressed="false">Bunyi: OFF</button><button id="host" aria-pressed="false">Mod host</button></div></header>
+  <main>
+    <div class="intro"><div class="eyebrow"><span></span> STRATEGI BERTEMU BAHASA <span></span></div><h1 lang="ar" dir="rtl">تَحَدِّي الشَّطْرَنْجِ العَرَبِيِّ</h1><p class="subtitle">Satu papan. Seribu kemungkinan. <span>Satu cabaran bersama.</span></p></div>
+    <aside id="install-help" class="install-help" hidden><b>Pasang pada peranti</b><p>Android / Chrome: buka menu ⋮ → Install app atau Add to Home screen.</p><p>iPhone / iPad: buka dalam Safari → Share → Add to Home Screen.</p><p id="offline-status" role="status">Buka app dengan internet dahulu untuk menyediakan permainan offline.</p></aside>
+    <div id="app"></div>
+    <section id="hostbar" hidden><b>Kawalan fasilitator</b><div><button data-host="skip">Langkau soalan · S</button><button data-host="answer">Lihat jawapan · A</button><button data-host="reset">Reset · R</button><button data-host="end">Tamat sesi</button><button data-host="clear">Padam leaderboard</button></div></section>
+    <footer><span><span class="footer-star">✦</span> Bahasa Arab, satu langkah pada satu masa.</span><span>Lawan AI / 2 Pemain <i>·</i> Tanpa login <i>·</i> <span id="connection-status">Sedia untuk offline</span></span></footer>
+  </main>
+  <div id="attract" hidden><div class="float-piece"><img src="favicon.svg" alt="" width="150" height="150"></div><p lang="ar" dir="rtl">تَحَدِّي الشَّطْرَنْجِ العَرَبِيِّ</p><h2>BERANI CUBA?</h2><p>CATUR &nbsp; • &nbsp; BAHASA ARAB &nbsp; • &nbsp; MAIN BERSAMA</p><button id="wake" class="primary">MULA SEKARANG ↗</button></div>
+  <div id="prize-popup" hidden role="alertdialog" aria-modal="true" aria-labelledby="prize-title"><div class="prize-card"><div class="prize-icon">🎉</div><p class="prize-arabic" lang="ar" dir="rtl">تَهَانِينَا!</p><h2 id="prize-title">BERJAYA!</h2><p class="prize-msg">Skor anda <b>90% ke atas</b>!<br>Sila klaim hadiah anda di kaunter.</p><button id="prize-close" class="primary">TERUSKAN ↗</button></div></div>
+  <script src="questions.js"></script><script src="chess-engine.js"></script><script src="chess-ai.js"></script><script src="pieces.js"></script><script src="app.js"></script><script src="install.js"></script>
+</body>
+</html>

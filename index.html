@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#073d2d">
+  <meta name="description" content="Portal aktiviti interaktif FPIB KIAS: Arabic Chess, Misi Mencari Hikmah dan Sirah Journey.">
+  <title>Interaktif Bersama FPIB</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="institution" href="./" aria-label="Interaktif Bersama FPIB — halaman utama">
+      <span class="logo-wrap"><img src="assets/logo-kias.png" alt="Logo rasmi KIAS"></span>
+      <span class="institution-copy"><b>KOLEJ UNIVERSITI ISLAM ANTARABANGSA<br>SULTAN ISMAIL PETRA</b><small>FAKULTI PENGAJIAN ISLAM &amp; BAHASA ARAB</small></span>
+    </a>
+    <div class="header-actions">
+      <span class="dev-credit">Dibangunkan oleh <b>Muzzammil Najib</b></span>
+      <span class="live-badge"><i></i> BOOTH INTERAKTIF</span>
+      <button id="install" class="quiet" hidden>Pasang app</button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> JOM TEROKA • JOM BELAJAR <span></span></p>
+        <h1>INTERAKTIF<br><em>BERSAMA FPIB</em></h1>
+        <p class="arabic" lang="ar" dir="rtl">تَعَلَّمْ، اِسْتَكْشِفْ، وَاسْتَمْتِعْ</p>
+        <a class="hero-button" href="#pilih-game">PILIH GAME <span>↓</span></a>
+      </div>
+      <div class="hero-mark" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="hero-logo"><img src="assets/logo-kias.png" alt=""></div>
+        <span class="spark s1">✦</span><span class="spark s2">✧</span><span class="spark s3">✦</span>
+      </div>
+    </section>
+
+    <section class="games-section" id="pilih-game">
+      <div class="section-heading">
+        <div><p class="eyebrow dark">PILIH CABARAN ANDA</p><h2>Tiga dunia untuk diterokai.</h2></div>
+      </div>
+
+      <div class="prize-banner">🎁 Jawapan &amp; skor <b>90% ke atas</b> layak memenangi hadiah!</div>
+
+      <div class="game-grid">
+        <article class="game-card chess-card" data-game-card="arabic-chess">
+          <div class="card-number">01</div>
+          <div class="card-art chess-art"><div class="chess-halo"></div><img src="games/arabic-chess/favicon.svg" alt="" aria-hidden="true"><span class="art-label">STRATEGI • BAHASA ARAB</span></div>
+          <div class="card-body">
+            <div class="tag-row"><span class="tag">1–6 PESERTA</span><span class="tag">10 MINIT</span></div>
+            <p class="arabic-title" lang="ar" dir="rtl">تَحَدِّي الشَّطْرَنْجِ العَرَبِيِّ</p>
+            <h3>ARABIC CHESS</h3>
+            <p>Tawan buah lawan, jawab soalan bahasa Arab dan buktikan strategi pasukan anda.</p>
+            <button class="play-button" data-launch="arabic-chess"><span>MULA MAIN</span><i>↗</i></button>
+          </div>
+        </article>
+
+        <article class="game-card wisdom-card" data-game-card="misi-mencari-hikmah">
+          <div class="card-number">02</div>
+          <div class="card-art wisdom-art"><div class="wisdom-land"><span class="moon">☾</span><span class="star star-a">✦</span><span class="star star-b">✧</span><span class="village">⌂</span><span class="trail"></span></div><span class="art-label">MISI • HADIS • HIKMAH</span></div>
+          <div class="card-body">
+            <div class="tag-row"><span class="tag">PENGEMBARAAN</span><span class="tag">INTERAKTIF</span></div>
+            <p class="arabic-title" lang="ar" dir="rtl">مَهَمَّةُ البَحْثِ عَنِ الحِكْمَةِ</p>
+            <h3>MISI MENCARI HIKMAH</h3>
+            <p>Jelajah dunia kampung, selesaikan misi dan temui hikmah pada setiap cabaran.</p>
+            <button class="play-button" data-launch="misi-mencari-hikmah"><span>MULA MISI</span><i>↗</i></button>
+          </div>
+        </article>
+
+        <article class="game-card sirah-card" data-game-card="sirah-journey">
+          <div class="card-number">03</div>
+          <div class="card-art sirah-art"><div class="desert-sun"></div><div class="dune d1"></div><div class="dune d2"></div><div class="route"><i></i><i></i><i></i><i></i></div><span class="destination">✦</span><span class="art-label">JEJAK • KENALI • HAYATI</span></div>
+          <div class="card-body">
+            <div class="tag-row"><span class="tag">10 CABARAN</span><span class="tag">4 MINIT</span></div>
+            <p class="arabic-title" lang="ar" dir="rtl">رِحْلَةُ السِّيرَة</p>
+            <h3>SIRAH JOURNEY</h3>
+            <p>Jejak peristiwa, kenali tokoh dan hayati nilai sepanjang perjalanan sirah.</p>
+            <button class="play-button" data-launch="sirah-journey"><span>MULA PERJALANAN</span><i>↗</i></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="how-section">
+      <div class="how-intro"><p class="eyebrow dark">CARA BERMAIN</p><h2>Mudah untuk bermula.</h2></div>
+      <ol class="steps">
+        <li><b>01</b><span><strong>Pilih game</strong><small>Pilih satu daripada tiga cabaran.</small></span></li>
+        <li><b>02</b><span><strong>Main bersama</strong><small>Bincang dan buat keputusan sepasukan.</small></span></li>
+        <li><b>03</b><span><strong>Cipta kenangan</strong><small>Kumpul skor dan cuba cabaran seterusnya.</small></span></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand"><img src="assets/logo-kias.png" alt="Logo KIAS"><span><b>INTERAKTIF BERSAMA FPIB</b></span></div>
+    <div class="footer-meta"><span class="copyright">© <span id="copyright-year">2026</span> <b>Muzzammil Najib</b>. Hak cipta terpelihara.</span></div>
+  </footer>
+
+  <section id="game-stage" class="game-stage" hidden aria-label="Paparan game">
+    <header class="stage-bar">
+      <button id="back-home" class="stage-back"><span>←</span> KEMBALI</button>
+      <div class="stage-title"><small>SEDANG BERMAIN</small><strong id="current-game">Game</strong></div>
+      <div class="stage-actions"><button id="reload-game" title="Muat semula game">↻ <span>RESET</span></button><button id="open-game" title="Buka di tab baharu">↗ <span>TAB BARU</span></button><button id="fullscreen-game" title="Paparan skrin penuh">⛶ <span>SKRIN PENUH</span></button></div>
+    </header>
+    <div id="stage-loading" class="stage-loading"><div class="loader-mark">✦</div><p>MENYEDIAKAN GAME…</p></div>
+    <iframe id="game-frame" title="Game interaktif FPIB" allow="fullscreen; autoplay" referrerpolicy="same-origin"></iframe>
+  </section>
+
+  <div id="attract" class="attract" hidden>
+    <img src="assets/logo-kias.png" alt="">
+    <p class="arabic" lang="ar" dir="rtl">أَهْلًا وَسَهْلًا</p>
+    <h2>JOM MAIN<br><span>BERSAMA FPIB!</span></h2>
+    <p>TIGA GAME INTERAKTIF MENANTI ANDA</p>
+    <button id="wake">MULA SEKARANG <span>↗</span></button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+رِحْلَةُ السِّيرَة — SIRAH JOURNEY CHALLENGE
+
+1. EXTRACT keseluruhan ZIP ke satu folder dahulu.
+2. Pastikan Python 3 dipasang pada komputer.
+   Jika tiada: https://www.python.org/downloads/
+   Windows: tandakan “Add Python to PATH” semasa pemasangan.
+3. WINDOWS: double-click start-local.bat.
+   MAC: buka start-local.command.
+4. Pelayar akan dibuka ke http://localhost:8080
+5. Tunggu “Sedia offline”, masukkan nama kumpulan dan mula bermain.
+
+Jika Mac tidak membenarkan fail .command dibuka, buka Terminal di folder ini:
+  bash start-local.command
+
+Cara manual (Terminal / Command Prompt di folder ini):
+  python3 -m http.server 8080
+Windows yang menggunakan Python Launcher:
+  py -3 -m http.server 8080
+Kemudian buka http://localhost:8080
+
+JANGAN double-click index.html untuk PWA/offline.
+Biarkan tetingkap server terbuka semasa penggunaan biasa.
+Chrome / Edge disyorkan. Butang “Pasang app” atau menu pelayar boleh
+memasang PWA apabila pelayar menyediakan pilihan pemasangan.
+
+Untuk tablet/telefon, letakkan fail web pada hosting HTTPS dahulu.
+Alamat localhost komputer bukan alamat localhost telefon.
+Tiada akaun, database atau API diperlukan oleh game.
+
+Baca README.txt untuk skor, kawalan host, offline dan cara edit soalan.
