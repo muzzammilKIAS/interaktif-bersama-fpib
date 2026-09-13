@@ -1,4 +1,4 @@
-const CACHE='fpib-interaktif-v14';
+const CACHE='fpib-interaktif-v15';
 const ASSETS=[
   './','index.html','style.css','app.js','manifest.webmanifest',
   'assets/logo-kias.png','assets/logo-fpib.png','assets/icon-192.png','assets/icon-512.png','assets/Baloo2-Variable.woff2','assets/lotus-linotype-light.ttf',

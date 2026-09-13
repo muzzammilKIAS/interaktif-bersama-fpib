@@ -265,6 +265,27 @@
   }
   #hud .score-total { color: var(--cream-dim); font-size: 0.85rem; }
 
+  .hud-exit {
+    position: absolute;
+    top: 18px; right: 18px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(180deg, var(--ink-2), var(--ink));
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(201, 154, 61, 0.4);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(0,0,0,0.35);
+    color: var(--cream-dim);
+    font-family: 'Kampung Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .hud-exit:hover { background: #3a2e1c; color: var(--cream); }
+  .hud-exit:focus-visible { outline: 3px solid var(--brass-bright); outline-offset: 2px; }
+
   /* ── Kotak Dialog: plak kayu tergantung ── */
   #dialogue-box {
     position: absolute;
@@ -592,10 +613,11 @@
   <div class="overlay">
     <div id="start-screen" class="interactive">
       <h1 class="pixel-title">MISI PENCARI<br>HIKMAH</h1>
-      <p class="lede">Selesaikan masalah penduduk kampung menggunakan mutiara kata dari Hadis 40 Imam Nawawi.</p>
+      <p class="lede">Cari <b>7 penduduk kampung</b> yang bertanda <b>❗</b>, dengar masalah mereka, dan pilih hadis yang tepat daripada Hadis 40 Imam Nawawi untuk membantu. Bantu <b>semua 7</b> untuk tamatkan misi!</p>
       <div class="control-notice">
         <div class="control-row"><span class="control-chip">🎮</span><span><b>PC:</b> guna [W][A][S][D] untuk gerak, [SPACE] untuk berinteraksi.</span></div>
         <div class="control-row"><span class="control-chip">📱</span><span><b>Telefon:</b> guna D-Pad di skrin dan butang &ldquo;Cakap&rdquo;.</span></div>
+        <div class="control-row"><span class="control-chip">🚪</span><span>Tekan butang <b>✕ Keluar</b> di sudut skrin bila-bila masa untuk berhenti.</span></div>
       </div>
       <button id="btn-start" class="btn btn-primary">MULA KEMBARA</button>
     </div>
@@ -604,6 +626,7 @@
       <span class="lantern"></span>
       <span>Penduduk Dibantu <span id="score-display" class="score-num">0</span><span class="score-total">/ <span id="score-max">7</span></span></span>
     </div>
+    <button id="btn-exit" class="hidden interactive hud-exit" aria-label="Keluar dan mula semula">✕ Keluar</button>
   </div>
 
   <div class="overlay">
@@ -1441,12 +1464,18 @@
   document.getElementById('btn-nasihat').addEventListener('click', openHadithMenu);
   document.getElementById('btn-tutup-buku').addEventListener('click', closeHadithMenu);
   document.getElementById('btn-main-semula').addEventListener('click', () => location.reload());
+  document.getElementById('btn-exit').addEventListener('click', () => {
+    if (confirm('Keluar dan mula semula misi? Kemajuan semasa akan hilang.')) location.reload();
+  });
 
   document.getElementById('btn-start').addEventListener('click', () => {
     document.getElementById('start-screen').parentElement.style.display = 'none';
     const hud = document.getElementById('hud');
     hud.classList.remove('hidden');
     hud.style.display = 'flex';
+    const exitBtn = document.getElementById('btn-exit');
+    exitBtn.classList.remove('hidden');
+    exitBtn.style.display = 'flex';
 
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
       document.getElementById('mobile-controls').style.display = 'flex';
