@@ -1221,10 +1221,11 @@
       let nx = player.x;
       let ny = player.y;
 
-      if (keys.w || mobileKeys.up) { ny--; player.facing = 'up'; moved = true; }
-      else if (keys.s || mobileKeys.down) { ny++; player.facing = 'down'; moved = true; }
-      else if (keys.a || mobileKeys.left) { nx--; player.facing = 'left'; moved = true; }
-      else if (keys.d || mobileKeys.right) { nx++; player.facing = 'right'; moved = true; }
+      const gp = window.gamepadDirections ? window.gamepadDirections() : null;
+      if (keys.w || mobileKeys.up || (gp && gp.up)) { ny--; player.facing = 'up'; moved = true; }
+      else if (keys.s || mobileKeys.down || (gp && gp.down)) { ny++; player.facing = 'down'; moved = true; }
+      else if (keys.a || mobileKeys.left || (gp && gp.left)) { nx--; player.facing = 'left'; moved = true; }
+      else if (keys.d || mobileKeys.right || (gp && gp.right)) { nx++; player.facing = 'right'; moved = true; }
 
       player.moving = moved;
 
@@ -1529,8 +1530,23 @@
   });
 
   // --- STREAMING_CHUNK: Gelung Permainan Utama ---
+  // Cross/✕ as the "space bar" of the village: only fires when no button
+  // already holds focus, so it never fights with gamepad-nav.js clicking a
+  // D-pad-focused button (dialogue/hadith/start/exit) on the same press.
+  let gpActionWasDown = false;
+  function pollGamepadAction() {
+    const gp = window.gamepadDirections ? window.gamepadDirections() : null;
+    const down = !!(gp && gp.action);
+    if (down && !gpActionWasDown && (document.activeElement === document.body || document.activeElement === canvas)) {
+      if (gameState === 'PLAYING') interact();
+      else if (gameState === 'DIALOG') skipTypewriter();
+    }
+    gpActionWasDown = down;
+  }
+
   function gameLoop() {
     update();
+    pollGamepadAction();
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawMap();
@@ -1544,5 +1560,6 @@
   drawNPCs();
   drawPlayer();
 </script>
+<script src="../../assets/gamepad-nav.js"></script>
 </body>
 </html>
