@@ -4,7 +4,12 @@
   const KEY = 'sirah-journey-v1';
   const LIMIT = 240000, FAST = 10000;
   const categories = ['Peristiwa','Tokoh','Tempat','Susun Peristiwa','Nilai & Ibrah'];
-  const names = ['Peristiwa','Tokoh','Tempat','Susun','Ibrah'];
+  // Setiap kategori ada ikon dan nama pendek sendiri supaya checkpoint pada peta
+  // perjalanan kelihatan sebagai lencana bergambar, bukan sekadar nombor.
+  const icons = {'Peristiwa':'📜','Tokoh':'👤','Tempat':'🕌','Susun Peristiwa':'🧭','Nilai & Ibrah':'💡','Mystery':'❓'};
+  const names = {'Peristiwa':'Peristiwa','Tokoh':'Tokoh','Tempat':'Tempat','Susun Peristiwa':'Susun','Nilai & Ibrah':'Ibrah','Mystery':'Misteri'};
+  const eras = {'Makkah':'ERA MAKKAH','Hijrah':'TAHUN HIJRAH','Madinah':'ERA MADINAH'};
+  const PER_LEVEL = 5;
   let memory = {}, storageOK = true;
   function read(key, fallback) { if(Object.prototype.hasOwnProperty.call(memory,key))return memory[key]; try { const raw=localStorage.getItem(KEY+key); return raw ? JSON.parse(raw) : fallback; } catch { storageOK=false; return memory[key] ?? fallback; } }
   function save(key,value) { memory[key]=value; try { localStorage.setItem(KEY+key,JSON.stringify(value)); } catch { storageOK=false; $('offline-status').textContent='Simpanan peranti tidak tersedia; rekod sesi ini sahaja.'; } }
@@ -19,11 +24,23 @@
     // has about a one-in-three chance of swapping one factual checkpoint for Mystery.
     for(const offset of [0,categories.length]) if(Math.random()<.34) cats[offset+Math.floor(Math.random()*3)]='Mystery';
     const used=new Set();
-    return cats.map(category=>{
+    const picked=cats.map(category=>{
       const pool=window.SIRAH_QUESTIONS.filter(q=>q.category===category&&!used.has(q.topic));
       const q=shuffle(pool)[0]; used.add(q.topic);
       return {...q, options:shuffle(q.options)};
     });
+    // Susun mengikut tahun peristiwa: satu sesi mengikut aliran sirah yang sebenar
+    // (Makkah → Hijrah → Madinah), bukan lompat ke sana ke mari. Isih JavaScript
+    // bersifat stable, jadi soalan tahun sama kekal berselang-seli antara kategori.
+    return picked.sort((a,b)=>a.year-b.year);
+  }
+  function levelOf(index){return Math.floor(index/PER_LEVEL)+1;}
+  function levelCount(){return Math.ceil(session.questions.length/PER_LEVEL);}
+  function levelEra(level){
+    const part=session.questions.slice((level-1)*PER_LEVEL,level*PER_LEVEL);
+    if(!part.length)return '';
+    const first=part[0].era,last=part[part.length-1].era;
+    return first===last?eras[first]:`${first.toUpperCase()} → ${last.toUpperCase()}`;
   }
   function dayKey(date=new Date()) { return `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`; }
   function leaders() {
@@ -54,16 +71,52 @@
   function tick(){if(!session||session.ended)return;const left=LIMIT-(Date.now()-session.started);$('timer').textContent=formatTime(left);$('timer-box').classList.toggle('amber',left<=60000&&left>20000);$('timer-box').classList.toggle('red',left<=20000);if(left<=0)finish('timeout');}
   function renderJourney(){
     const nav=$('journey');nav.replaceChildren();
-    session.questions.forEach((q,i)=>{const d=document.createElement('div');d.className='checkpoint'+(i<session.index||(i===session.index&&locked)?' done':'')+(i===session.index?' current':'');d.setAttribute('aria-label',`Checkpoint ${i+1}: ${q.category}${i===session.index?', semasa':''}`);if(i===session.index)d.setAttribute('aria-current','step');const icon=document.createElement('i');icon.textContent=i<session.index?'✓':i+1;const text=document.createElement('span');text.textContent=q.category==='Mystery'?'Misteri':names[i%names.length];d.append(icon,text);nav.append(d);});
+    for(let level=1;level<=levelCount();level++){
+      const part=session.questions.slice((level-1)*PER_LEVEL,level*PER_LEVEL);
+      const group=document.createElement('div');
+      group.className='journey-level'+(levelOf(session.index)===level?' active':'')+(levelOf(session.index)>level?' cleared':'');
+      const tag=document.createElement('p');tag.className='level-tag';
+      const badge=document.createElement('b');badge.textContent=`LEVEL ${level}`;
+      const era=document.createElement('span');era.textContent=levelEra(level);
+      const count=document.createElement('i');count.textContent=`${part.length} soalan`;
+      tag.append(badge,era,count);
+      const row=document.createElement('div');row.className='journey-row';
+      part.forEach((q,n)=>{
+        const i=(level-1)*PER_LEVEL+n;
+        const d=document.createElement('div');
+        d.className='checkpoint'+(i<session.index||(i===session.index&&locked)?' done':'')+(i===session.index?' current':'');
+        d.setAttribute('aria-label',`Checkpoint ${i+1}: ${q.category}, tahun ${q.year} Masihi${i===session.index?', semasa':''}`);
+        if(i===session.index)d.setAttribute('aria-current','step');
+        const icon=document.createElement('i');icon.textContent=i<session.index?'✓':icons[q.category]||'✦';
+        const text=document.createElement('span');text.textContent=names[q.category]||q.category;
+        const year=document.createElement('small');year.textContent=`${q.year}M`;
+        d.append(icon,text,year);row.append(d);
+      });
+      group.append(tag,row);nav.append(group);
+    }
+  }
+  function showLevelToast(){
+    const toast=$('level-toast');
+    toast.textContent=`LEVEL ${levelOf(session.index)} · ${levelEra(levelOf(session.index))}`;
+    toast.hidden=false;toast.classList.remove('show');void toast.offsetWidth;toast.classList.add('show');
+    clearTimeout(showLevelToast.timer);
+    showLevelToast.timer=setTimeout(()=>{toast.classList.remove('show');toast.hidden=true;},2400);
   }
   function showQuestion(){
     locked=false;order=[];questionTime=Date.now();const q=session.questions[session.index];
-    $('score').textContent=session.score;$('category').textContent=`${String(session.index+1).padStart(2,'0')} / ${String(session.questions.length).padStart(2,'0')} · ${q.category.toUpperCase()}`;$('point-label').textContent=`${q.points} mata · bonus pantas +25`;
+    $('score').textContent=session.score;
+    $('category').textContent=`${icons[q.category]||'✦'} ${q.category.toUpperCase()}`;
+    $('era-badge').textContent=`${q.year}M · ${eras[q.era]||q.era.toUpperCase()}`;
+    $('era-badge').className='era-badge era-'+q.era.toLowerCase();
+    $('progress-label').textContent=`LEVEL ${levelOf(session.index)}/${levelCount()} · CHECKPOINT ${String(session.index+1).padStart(2,'0')}/${String(session.questions.length).padStart(2,'0')}`;
+    $('question-icon').textContent=icons[q.category]||'✦';
+    $('point-label').textContent=`${q.points} mata · bonus pantas +25`;
     $('question').textContent=q.question;$('feedback').hidden=true;$('feedback').replaceChildren();$('next').hidden=true;
     $('timeline-hint').hidden=q.type!=='timeline';$('timeline-actions').hidden=q.type!=='timeline';$('submit-order').disabled=true;$('undo-order').disabled=false;
     $('answers').className='answers'+(q.type==='timeline'?' timeline':'');$('answers').replaceChildren();
     q.options.forEach((option,i)=>{const b=document.createElement('button');b.className='answer';b.dataset.value=option;const label=document.createElement('span');label.className='letter';label.textContent=q.type==='timeline'?'–':String.fromCharCode(65+i);const text=document.createElement('span');text.textContent=option;b.append(label,text);b.addEventListener('click',()=>{if(!active())return;if(q.type==='timeline')chooseOrder(option);else answer(option);});$('answers').append(b);});
     renderJourney();$('question').focus({preventScroll:true});
+    if(session.index%PER_LEVEL===0)showLevelToast();
   }
   function active(){if(view!=='game'||!session||session.ended||locked)return false;if(Date.now()-session.started>=LIMIT){finish('timeout');return false;}return true;}
   function chooseOrder(value){
@@ -86,7 +139,8 @@
     if(!correct){const a=document.createElement('p');a.textContent='Jawapan: '+(Array.isArray(q.correctAnswer)?q.correctAnswer.join(' → '):q.correctAnswer);f.append(a);}
     const ex=document.createElement('p');ex.textContent=q.shortExplanation;f.append(ex);
     const last=session.index===session.questions.length-1;
-    $('score').textContent=session.score;$('next').textContent=last?'LIHAT KEPUTUSAN →':'CHECKPOINT SETERUSNYA →';$('next').hidden=false;
+    const opensLevel=!last&&(session.index+1)%PER_LEVEL===0;
+    $('score').textContent=session.score;$('next').textContent=last?'LIHAT KEPUTUSAN →':opensLevel?`MULA LEVEL ${levelOf(session.index+1)} →`:'CHECKPOINT SETERUSNYA →';$('next').hidden=false;
     renderJourney();save(':score',{team:session.team,score:session.score,complete:false});beep(correct);
     if(last)finalDelay=setTimeout(()=>finish('complete'),2600);
   }
@@ -94,9 +148,10 @@
   function finish(reason){
     if(!session||session.ended)return;session.ended=true;stopTimers();
     const elapsed=Math.min(LIMIT,Date.now()-session.started),correct=session.correct,total=session.questions.length;
-    const levels=correct===total?['بَطَلُ السِّيرَة','SIRAH CHAMPION']:correct>=Math.ceil(total*.8)?['مُمْتَازٌ','Excellent']:correct>=Math.ceil(total*.4)?['جَيِّدٌ','Good']:['مُحَاوَلَةٌ جَيِّدَةٌ','Good Try'];
+    const levels=correct===total?['بَطَلُ السِّيرَة','SIRAH CHAMPION','🏆']:correct>=Math.ceil(total*.8)?['مُمْتَازٌ','Excellent','🌟']:correct>=Math.ceil(total*.4)?['جَيِّدٌ','Good','🌿']:['مُحَاوَلَةٌ جَيِّدَةٌ','Good Try','🌱'];
+    $('result-icon').textContent=levels[2];
     $('result-heading').textContent=reason==='timeout'?'MASA TAMAT!':'TAHNIAH!';$('result-team').textContent=session.team;$('performance-ar').textContent=levels[0];$('performance').textContent=levels[1];$('result-score').textContent=session.score;$('result-max').textContent=`daripada ${session.maxScore} mata untuk set ini`;
-    $('result-correct').textContent=`${correct} / ${total}`;$('result-accuracy').textContent=`${Math.round(correct*100/total)}%`;$('result-time').textContent=formatTime(elapsed);$('result-detail').textContent=`${session.players} peserta · ${session.answered} soalan dijawab · Ketepatan daripada ${total} cabaran`;
+    $('result-correct').textContent=`${correct} / ${total}`;$('result-accuracy').textContent=`${Math.round(correct*100/total)}%`;$('result-time').textContent=formatTime(elapsed);$('result-detail').textContent=`${session.players} peserta · ${levelCount()} level × ${PER_LEVEL} soalan · ${session.answered} soalan dijawab`;
     const entries=leaders();entries.push({team:session.team,score:session.score,time:elapsed});entries.sort((a,b)=>b.score-a.score||a.time-b.time);save(':leaders',{day:dayKey(),entries:entries.slice(0,5)});save(':score',{team:session.team,score:session.score,correct,elapsed,complete:true});
     setView('result');renderLeaders();$('new-team').focus({preventScroll:true});
     if(total>0&&Math.round(correct*100/total)>=90){$('prize-popup').hidden=false;beep(true)}

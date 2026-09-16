@@ -449,3 +449,114 @@ body:has(.attract:not([hidden])){overflow:hidden}
 .prize-msg b{color:var(--matcha-deep)}
 @keyframes prize-pop{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(max-width:600px){.prize-card{padding:30px 22px 26px}.prize-icon{font-size:48px}.prize-card h2{font-size:28px}.prize-msg{font-size:16px}}
+
+/* 10 · HIASAN & LEVEL (tema bergambar) ====================================== */
+/* Corak bintang geometri Islam sebagai tekstur latar — sangat lembut supaya
+   teks kekal mudah dibaca, tetapi halaman tidak lagi kelihatan kosong. */
+body{
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23c47f8d' stroke-opacity='.13' stroke-width='1.1'%3E%3Cpath d='M60 16 73 34 95 34 82 52 95 70 73 70 60 88 47 70 25 70 38 52 25 34 47 34Z'/%3E%3Ccircle cx='60' cy='52' r='9'/%3E%3Cpath d='M0 112h120M60 112v8'/%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(1100px 720px at 6% -12%,#fbe6e5 0%,#fbe6e500 58%),
+    radial-gradient(980px 680px at 102% 4%,#e6efe2 0%,#e6efe200 55%),
+    radial-gradient(900px 620px at 50% 116%,#fbeae8 0%,#fbeae800 60%),
+    var(--cream);
+}
+
+/* Fakta pembuka: ikon kecil di atas setiap angka */
+.facts{flex-wrap:wrap;gap:22px}
+.facts>div{padding-right:22px}
+.facts i{font-style:normal;font-size:22px;line-height:1;margin-bottom:6px}
+.facts span{font-size:11px}
+
+/* Ilustrasi pembuka: Makkah → laluan → Madinah */
+.hero-art{margin:30px 0 6px;max-width:520px;filter:drop-shadow(var(--shadow-sm))}
+.hero-art svg{width:100%;height:auto;display:block}
+
+.journey-teaser span{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--rose-deep)}
+.journey-teaser span:last-of-type{color:var(--matcha-deep)}
+.journey-teaser b{font-size:19px;line-height:1}
+
+/* Panel berhias: jalur warna halus di bahagian atas setiap kad */
+.panel{position:relative;overflow:hidden}
+.panel::before{
+  content:"";position:absolute;inset:0 0 auto;height:4px;
+  background:linear-gradient(90deg,var(--rose) 0%,var(--rose-deep) 45%,var(--matcha) 100%);
+  opacity:.75;
+}
+
+/* Peta perjalanan: dua level, lima checkpoint setiap level */
+.journey{display:flex;flex-direction:column;gap:18px;max-width:880px}
+.journey-level{
+  padding:14px 18px 8px;border-radius:20px;
+  border:1px solid var(--line);background:#fffdfcb3;transition:border-color .2s ease,box-shadow .2s ease;
+}
+.journey-level.active{border-color:var(--rose);box-shadow:var(--shadow-sm);background:var(--white)}
+.journey-level.cleared{background:#f4f8f2b3;border-color:#d8e5d4}
+.level-tag{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:11px;letter-spacing:1.6px}
+.level-tag b{
+  padding:5px 12px;border-radius:999px;font-size:11px;letter-spacing:1.4px;
+  background:var(--blush);color:var(--rose-ink);
+}
+.journey-level.active .level-tag b{background:linear-gradient(140deg,var(--rose),var(--rose-deep));color:var(--white)}
+.journey-level.cleared .level-tag b{background:var(--matcha-soft);color:var(--matcha-ink)}
+.level-tag span{color:var(--muted);font-weight:700}
+.level-tag i{margin-left:auto;font-style:normal;color:var(--muted);letter-spacing:.5px;font-size:11px}
+.journey-row{display:grid;grid-template-columns:repeat(5,1fr)}
+.checkpoint::before{left:-50%;right:50%}
+.checkpoint:first-child::before{display:none}
+.checkpoint small{display:block;margin-top:3px;font-size:10px;letter-spacing:.6px;color:var(--muted);opacity:.85}
+.checkpoint.current small{color:var(--rose-deep);opacity:1}
+.checkpoint i{font-size:22px}
+
+/* Papan tanda level yang muncul seketika apabila level baharu bermula */
+.level-toast{
+  width:max-content;max-width:min(100%,560px);margin:0 auto 16px;padding:11px 26px;border-radius:999px;text-align:center;
+  font-size:13px;font-weight:700;letter-spacing:2px;color:var(--white);
+  background:linear-gradient(120deg,var(--rose) 0%,var(--rose-deep) 55%,var(--matcha-deep) 100%);
+  box-shadow:var(--shadow-sm);opacity:0;transform:translateY(-6px);
+  transition:opacity .3s ease,transform .3s ease;
+}
+.level-toast.show{opacity:1;transform:translateY(0)}
+
+/* Kad soalan: lencana ikon kategori dan cip tahun peristiwa */
+.question-meta{flex-wrap:wrap}
+.meta-gap{flex:1;min-width:0}
+.progress-label{font-size:12px;letter-spacing:1.2px;color:var(--muted);font-weight:700}
+.era-badge{
+  border-radius:999px;padding:8px 15px;font-size:12px;font-weight:700;letter-spacing:1px;
+  background:var(--blush);color:var(--rose-ink);border:1px solid #f0d3d6;
+}
+.era-badge.era-madinah{background:var(--matcha-soft);color:var(--matcha-ink);border-color:#d5e5d1}
+.era-badge.era-hijrah{background:#fbf0dd;color:#8a5a1c;border-color:#eedcb8}
+.question-icon{
+  width:66px;height:66px;margin:18px auto 0;border-radius:24px;
+  display:flex;align-items:center;justify-content:center;font-size:32px;line-height:1;
+  background:linear-gradient(140deg,var(--blush) 0%,var(--matcha-soft) 100%);
+  box-shadow:var(--shadow-sm);
+}
+
+/* Keputusan: lencana pencapaian */
+.result-icon{font-size:56px;line-height:1;margin-bottom:6px}
+
+@media(max-width:960px){
+  .hero-art{max-width:440px;margin-top:22px}
+}
+@media(max-width:720px){
+  .hero-art{max-width:400px;margin:20px auto 0}
+  .journey-teaser{display:grid}
+  .facts{gap:16px}
+  .facts>div{padding-right:16px}
+  .facts i{font-size:18px}
+  .journey{gap:12px}
+  .journey-level{padding:11px 10px 6px;border-radius:16px}
+  .level-tag{font-size:10px;letter-spacing:1px;gap:7px;margin-bottom:9px}
+  .level-tag b{padding:4px 9px;font-size:10px}
+  .level-tag i{display:none}
+  .checkpoint i{font-size:18px}
+  .checkpoint small{font-size:9px}
+  .question-icon{width:54px;height:54px;font-size:26px;border-radius:18px;margin-top:14px}
+  .era-badge,.progress-label{font-size:11px;padding:6px 11px}
+  .progress-label{padding:0}
+  .level-toast{font-size:11px;letter-spacing:1.2px;padding:10px 12px}
+  .result-icon{font-size:44px}
+}

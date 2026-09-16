@@ -16,7 +16,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Hijrah",
     "shortExplanation": "Hijrah membawa Rasulullah ﷺ dan umat Islam dari Makkah ke Madinah.",
     "points": 100,
-    "topic": "hijrah"
+    "topic": "hijrah",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q02",
@@ -32,7 +34,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Fath Makkah",
     "shortExplanation": "Fath Makkah bermaksud pembukaan kota Makkah.",
     "points": 100,
-    "topic": "fath"
+    "topic": "fath",
+    "year": 630,
+    "era": "Madinah"
   },
   {
     "id": "q03",
@@ -48,7 +52,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Perang Badar",
     "shortExplanation": "Perang Badar berlaku sebelum Perang Uhud.",
     "points": 100,
-    "topic": "badr"
+    "topic": "badr",
+    "year": 624,
+    "era": "Madinah"
   },
   {
     "id": "q04",
@@ -64,7 +70,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Perjanjian Hudaibiyah",
     "shortExplanation": "Perjanjian Hudaibiyah membuka ruang perdamaian antara umat Islam dan Quraisy.",
     "points": 100,
-    "topic": "hudaibiyah"
+    "topic": "hudaibiyah",
+    "year": 628,
+    "era": "Madinah"
   },
   {
     "id": "q05",
@@ -80,7 +88,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Parit",
     "shortExplanation": "Khandaq bermaksud parit yang digunakan untuk pertahanan Madinah.",
     "points": 100,
-    "topic": "khandaq"
+    "topic": "khandaq",
+    "year": 627,
+    "era": "Madinah"
   },
   {
     "id": "q06",
@@ -96,7 +106,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Haji Wada’",
     "shortExplanation": "Haji Wada’ dikenali sebagai haji perpisahan Rasulullah ﷺ.",
     "points": 100,
-    "topic": "wada"
+    "topic": "wada",
+    "year": 632,
+    "era": "Madinah"
   },
   {
     "id": "q07",
@@ -112,7 +124,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Isra’",
     "shortExplanation": "Isra’ ialah perjalanan malam dari Masjidil Haram ke Masjidil Aqsa.",
     "points": 100,
-    "topic": "isra"
+    "topic": "isra",
+    "year": 620,
+    "era": "Makkah"
   },
   {
     "id": "q08",
@@ -128,7 +142,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Al-‘Alaq",
     "shortExplanation": "Lima ayat awal Surah al-‘Alaq diturunkan sebagai wahyu pertama.",
     "points": 100,
-    "topic": "alaq"
+    "topic": "alaq",
+    "year": 610,
+    "era": "Makkah"
   },
   {
     "id": "q09",
@@ -144,7 +160,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Muhajirin dan Ansar",
     "shortExplanation": "Persaudaraan Muhajirin dan Ansar mengukuhkan masyarakat Islam di Madinah.",
     "points": 100,
-    "topic": "brotherhood"
+    "topic": "brotherhood",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q10",
@@ -160,7 +178,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Habsyah",
     "shortExplanation": "Sebahagian Muslim berhijrah ke Habsyah untuk mencari perlindungan.",
     "points": 100,
-    "topic": "habsyah"
+    "topic": "habsyah",
+    "year": 615,
+    "era": "Makkah"
   },
   {
     "id": "q11",
@@ -176,7 +196,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Mentauhidkan Allah",
     "shortExplanation": "Dakwah Rasulullah ﷺ menyeru manusia menyembah Allah Yang Esa.",
     "points": 100,
-    "topic": "tauhid"
+    "topic": "tauhid",
+    "year": 613,
+    "era": "Makkah"
   },
   {
     "id": "q12",
@@ -192,7 +214,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Mikraj",
     "shortExplanation": "Mikraj ialah peristiwa naik ke langit dengan izin Allah.",
     "points": 100,
-    "topic": "mikraj"
+    "topic": "mikraj",
+    "year": 620,
+    "era": "Makkah"
   },
   {
     "id": "q13",
@@ -208,7 +232,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Abu Bakar al-Siddiq",
     "shortExplanation": "Abu Bakar al-Siddiq menemani Rasulullah ﷺ ketika hijrah.",
     "points": 100,
-    "topic": "abu"
+    "topic": "abu",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q14",
@@ -224,7 +250,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Khadijah binti Khuwailid",
     "shortExplanation": "Khadijah menenangkan dan menyokong Rasulullah ﷺ selepas wahyu pertama.",
     "points": 100,
-    "topic": "khadijah"
+    "topic": "khadijah",
+    "year": 610,
+    "era": "Makkah"
   },
   {
     "id": "q15",
@@ -240,7 +268,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Jibril",
     "shortExplanation": "Jibril menyampaikan wahyu daripada Allah kepada Rasulullah ﷺ.",
     "points": 100,
-    "topic": "jibril"
+    "topic": "jibril",
+    "year": 610,
+    "era": "Makkah"
   },
   {
     "id": "q16",
@@ -256,7 +286,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Abdullah",
     "shortExplanation": "Bapa Rasulullah ﷺ bernama Abdullah bin Abdul Muttalib.",
     "points": 100,
-    "topic": "father"
+    "topic": "father",
+    "year": 570,
+    "era": "Makkah"
   },
   {
     "id": "q17",
@@ -272,7 +304,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Aminah",
     "shortExplanation": "Ibu Rasulullah ﷺ bernama Aminah binti Wahb.",
     "points": 100,
-    "topic": "mother"
+    "topic": "mother",
+    "year": 570,
+    "era": "Makkah"
   },
   {
     "id": "q18",
@@ -288,7 +322,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Abdul Muttalib",
     "shortExplanation": "Abdul Muttalib menjaga Rasulullah ﷺ selepas kewafatan ibu Baginda.",
     "points": 100,
-    "topic": "grandfather"
+    "topic": "grandfather",
+    "year": 578,
+    "era": "Makkah"
   },
   {
     "id": "q19",
@@ -304,7 +340,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Abu Talib",
     "shortExplanation": "Abu Talib menjaga Rasulullah ﷺ selepas kewafatan Abdul Muttalib.",
     "points": 100,
-    "topic": "uncle"
+    "topic": "uncle",
+    "year": 578,
+    "era": "Makkah"
   },
   {
     "id": "q20",
@@ -320,7 +358,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Bilal bin Rabah",
     "shortExplanation": "Bilal bin Rabah terkenal sebagai muazin Rasulullah ﷺ.",
     "points": 100,
-    "topic": "bilal"
+    "topic": "bilal",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q21",
@@ -336,7 +376,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Fatimah",
     "shortExplanation": "Fatimah ialah puteri Rasulullah ﷺ dan isteri Ali bin Abi Talib.",
     "points": 100,
-    "topic": "fatimah"
+    "topic": "fatimah",
+    "year": 624,
+    "era": "Madinah"
   },
   {
     "id": "q22",
@@ -352,7 +394,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Halimah al-Sa‘diyyah",
     "shortExplanation": "Halimah al-Sa‘diyyah merupakan ibu susuan Rasulullah ﷺ.",
     "points": 100,
-    "topic": "halimah"
+    "topic": "halimah",
+    "year": 570,
+    "era": "Makkah"
   },
   {
     "id": "q23",
@@ -368,7 +412,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Gua Hira’",
     "shortExplanation": "Wahyu pertama diterima di Gua Hira’.",
     "points": 100,
-    "topic": "hira"
+    "topic": "hira",
+    "year": 610,
+    "era": "Makkah"
   },
   {
     "id": "q24",
@@ -384,7 +430,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Makkah",
     "shortExplanation": "Rasulullah ﷺ dilahirkan di Makkah.",
     "points": 100,
-    "topic": "birth"
+    "topic": "birth",
+    "year": 570,
+    "era": "Makkah"
   },
   {
     "id": "q25",
@@ -400,7 +448,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Madinah",
     "shortExplanation": "Madinah menjadi kota tujuan hijrah Rasulullah ﷺ.",
     "points": 100,
-    "topic": "destination"
+    "topic": "destination",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q26",
@@ -416,7 +466,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Gua Thawr",
     "shortExplanation": "Rasulullah ﷺ dan Abu Bakar berlindung di Gua Thawr ketika hijrah.",
     "points": 100,
-    "topic": "thawr"
+    "topic": "thawr",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q27",
@@ -432,7 +484,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Madinah",
     "shortExplanation": "Masjid Nabawi terletak di Madinah.",
     "points": 100,
-    "topic": "nabawi"
+    "topic": "nabawi",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q28",
@@ -448,7 +502,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Yathrib",
     "shortExplanation": "Kota Madinah dahulunya dikenali sebagai Yathrib.",
     "points": 100,
-    "topic": "yathrib"
+    "topic": "yathrib",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q29",
@@ -464,7 +520,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Taif",
     "shortExplanation": "Rasulullah ﷺ pergi berdakwah ke Taif walaupun berdepan penolakan.",
     "points": 100,
-    "topic": "taif"
+    "topic": "taif",
+    "year": 619,
+    "era": "Makkah"
   },
   {
     "id": "q30",
@@ -480,7 +538,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Masjid Quba’",
     "shortExplanation": "Masjid Quba’ dibina ketika persinggahan Rasulullah ﷺ dalam perjalanan hijrah.",
     "points": 100,
-    "topic": "quba"
+    "topic": "quba",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q31",
@@ -499,7 +559,9 @@ window.SIRAH_QUESTIONS = [
     ],
     "shortExplanation": "Urutan: Wahyu pertama → Hijrah ke Madinah → Perang Badar.",
     "points": 120,
-    "topic": "timeline30"
+    "topic": "timeline30",
+    "year": 624,
+    "era": "Madinah"
   },
   {
     "id": "q32",
@@ -518,7 +580,9 @@ window.SIRAH_QUESTIONS = [
     ],
     "shortExplanation": "Urutan: Kelahiran Rasulullah ﷺ → Wahyu pertama → Hijrah ke Madinah.",
     "points": 120,
-    "topic": "timeline31"
+    "topic": "timeline31",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q33",
@@ -537,7 +601,9 @@ window.SIRAH_QUESTIONS = [
     ],
     "shortExplanation": "Urutan: Hijrah ke Madinah → Perang Badar → Perang Uhud.",
     "points": 120,
-    "topic": "timeline32"
+    "topic": "timeline32",
+    "year": 625,
+    "era": "Madinah"
   },
   {
     "id": "q34",
@@ -556,7 +622,9 @@ window.SIRAH_QUESTIONS = [
     ],
     "shortExplanation": "Urutan: Perang Badar → Perang Uhud → Perang Khandaq.",
     "points": 120,
-    "topic": "timeline33"
+    "topic": "timeline33",
+    "year": 627,
+    "era": "Madinah"
   },
   {
     "id": "q35",
@@ -575,7 +643,9 @@ window.SIRAH_QUESTIONS = [
     ],
     "shortExplanation": "Urutan: Hijrah ke Madinah → Perjanjian Hudaibiyah → Fath Makkah.",
     "points": 120,
-    "topic": "timeline34"
+    "topic": "timeline34",
+    "year": 630,
+    "era": "Madinah"
   },
   {
     "id": "q36",
@@ -594,7 +664,9 @@ window.SIRAH_QUESTIONS = [
     ],
     "shortExplanation": "Urutan: Perang Khandaq → Perjanjian Hudaibiyah → Fath Makkah.",
     "points": 120,
-    "topic": "timeline35"
+    "topic": "timeline35",
+    "year": 630,
+    "era": "Madinah"
   },
   {
     "id": "q37",
@@ -613,7 +685,9 @@ window.SIRAH_QUESTIONS = [
     ],
     "shortExplanation": "Urutan: Wahyu pertama → Fath Makkah → Haji Wada’.",
     "points": 120,
-    "topic": "timeline36"
+    "topic": "timeline36",
+    "year": 632,
+    "era": "Madinah"
   },
   {
     "id": "q38",
@@ -632,7 +706,9 @@ window.SIRAH_QUESTIONS = [
     ],
     "shortExplanation": "Urutan: Perjanjian Hudaibiyah → Fath Makkah → Haji Wada’.",
     "points": 120,
-    "topic": "timeline37"
+    "topic": "timeline37",
+    "year": 632,
+    "era": "Madinah"
   },
   {
     "id": "q39",
@@ -648,7 +724,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Saling menyokong",
     "shortExplanation": "Sokongan Khadijah mengajar kita membantu orang yang sedang menghadapi kesukaran.",
     "points": 100,
-    "topic": "khadijah"
+    "topic": "khadijah",
+    "year": 610,
+    "era": "Makkah"
   },
   {
     "id": "q40",
@@ -664,7 +742,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Setia kawan",
     "shortExplanation": "Kesetiaan Abu Bakar menunjukkan pentingnya menemani sahabat dalam kesukaran.",
     "points": 100,
-    "topic": "abu"
+    "topic": "abu",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q41",
@@ -680,7 +760,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Tolong-menolong",
     "shortExplanation": "Muhajirin dan Ansar memberi contoh persaudaraan dan saling membantu.",
     "points": 100,
-    "topic": "brotherhood"
+    "topic": "brotherhood",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q42",
@@ -696,7 +778,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Sabar dan tabah",
     "shortExplanation": "Ketabahan Rasulullah ﷺ mengajar kita bersabar dalam melakukan kebaikan.",
     "points": 100,
-    "topic": "patience"
+    "topic": "patience",
+    "year": 616,
+    "era": "Makkah"
   },
   {
     "id": "q43",
@@ -712,7 +796,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Rahmah dan harapan",
     "shortExplanation": "Rasulullah ﷺ mengharapkan kebaikan bagi generasi selepas mereka.",
     "points": 100,
-    "topic": "taif"
+    "topic": "taif",
+    "year": 619,
+    "era": "Makkah"
   },
   {
     "id": "q44",
@@ -728,7 +814,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Berusaha sambil bergantung kepada Allah",
     "shortExplanation": "Hijrah mengajar kita menggabungkan usaha dengan tawakal kepada Allah.",
     "points": 100,
-    "topic": "hijrah"
+    "topic": "hijrah",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q45",
@@ -744,7 +832,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Boleh dipercayai",
     "shortExplanation": "Al-Amin bermaksud orang yang dipercayai.",
     "points": 100,
-    "topic": "amin"
+    "topic": "amin",
+    "year": 605,
+    "era": "Makkah"
   },
   {
     "id": "q46",
@@ -760,7 +850,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Berganding bahu",
     "shortExplanation": "Kerjasama menggali parit menunjukkan kepentingan usaha bersama.",
     "points": 100,
-    "topic": "khandaq"
+    "topic": "khandaq",
+    "year": 627,
+    "era": "Madinah"
   },
   {
     "id": "q47",
@@ -776,7 +868,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Abu Bakar al-Siddiq",
     "shortExplanation": "Abu Bakar ialah sahabat yang menemani Rasulullah ﷺ di dalam gua.",
     "points": 150,
-    "topic": "abu"
+    "topic": "abu",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q48",
@@ -792,7 +886,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Gua Hira’",
     "shortExplanation": "Gua Hira’ ialah tempat Rasulullah ﷺ menerima wahyu pertama.",
     "points": 150,
-    "topic": "hira"
+    "topic": "hira",
+    "year": 610,
+    "era": "Makkah"
   },
   {
     "id": "q49",
@@ -808,7 +904,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Khadijah binti Khuwailid",
     "shortExplanation": "Khadijah memberikan ketenangan dan sokongan kepada Rasulullah ﷺ.",
     "points": 150,
-    "topic": "khadijah"
+    "topic": "khadijah",
+    "year": 610,
+    "era": "Makkah"
   },
   {
     "id": "q50",
@@ -824,7 +922,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Madinah",
     "shortExplanation": "Yathrib ialah nama lama Madinah.",
     "points": 150,
-    "topic": "yathrib"
+    "topic": "yathrib",
+    "year": 622,
+    "era": "Hijrah"
   },
   {
     "id": "q51",
@@ -840,7 +940,9 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Fath Makkah",
     "shortExplanation": "Fath Makkah bermaksud pembukaan kota Makkah.",
     "points": 150,
-    "topic": "fath"
+    "topic": "fath",
+    "year": 630,
+    "era": "Madinah"
   },
   {
     "id": "q52",
@@ -856,6 +958,8 @@ window.SIRAH_QUESTIONS = [
     "correctAnswer": "Bilal bin Rabah",
     "shortExplanation": "Bilal bin Rabah terkenal dengan peranannya sebagai muazin.",
     "points": 150,
-    "topic": "bilal"
+    "topic": "bilal",
+    "year": 622,
+    "era": "Hijrah"
   }
 ];

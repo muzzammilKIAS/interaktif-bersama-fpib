@@ -1,32 +1,33 @@
 SIRAH JOURNEY — QA REPORT
 Date: 2026-09-10
 
-PASS (25 groups)
+PASS (26 groups)
 1. 52 records, category minimums, unique IDs and valid answer schema
 2. 1,000 randomized sessions: 10 unique IDs/topics, two timeline + two ibrah, occasional Mystery
-3. Team input, all 1–6 participant choices and 4:00 start
-4. Host Next cannot bypass unanswered checkpoint; keyboard gated when host closed
-5. MCQ scoring and fast bonus; repeated tap cannot award twice
-6. Correct answer after 10 seconds receives base points only
-7. Wrong answer scores zero and exposes correct answer + explanation
-8. Timeline tap ordering, undo, deselect, submit locking and 120+25 scoring
-9. Ten checkpoints end in results; correct, accuracy, time, score and leaderboard
-10. Replay preserves team + participants; new team resets in one action
-11. Timer amber at 1:00, red at 0:20, timeout at 0 including background elapsed time
-12. Answer at/after deadline is rejected without awarding points
-13. Host shortcuts A/N/S/R, no scoring on reveal/skip, input typing safe
-14. Attract after 30 seconds, touch return, inert background; never interrupts game
-15. Perfect sessions produce Champion and exact set maximum (1290, 1340 or 1390)
-16. Leaderboard top 5 sorted by score and time; date rollover and reset
-17. Sound settings and last team score persist through localStorage API
-18. Storage blocked or corrupt does not prevent game play
-19. User-supplied name rendered as text, not interpreted markup
-20. Install fallback dialog opens and closes
-21. HTML references exist; manifest scopes relative; icons dimensions; RTL and responsive CSS declared
-22. SW install: all 11 required assets precached, skipWaiting called so one reload adopts a new deploy
-23. SW activation: prior app cache removed, unrelated cache retained, clients claimed
-24. SW fetch: cached app, question data, styles, manifest, fonts and icons served with network unavailable
-25. SW offline navigation fallback serves index
+3. 300 sessions run in year order: 2 levels × 5 soalan, tahun tidak pernah berundur
+4. Team input, all 1–6 participant choices and 4:00 start
+5. Host Next cannot bypass unanswered checkpoint; keyboard gated when host closed
+6. MCQ scoring and fast bonus; repeated tap cannot award twice
+7. Correct answer after 10 seconds receives base points only
+8. Wrong answer scores zero and exposes correct answer + explanation
+9. Timeline tap ordering, undo, deselect, submit locking and 120+25 scoring
+10. Ten checkpoints end in results; correct, accuracy, time, score and leaderboard
+11. Replay preserves team + participants; new team resets in one action
+12. Timer amber at 1:00, red at 0:20, timeout at 0 including background elapsed time
+13. Answer at/after deadline is rejected without awarding points
+14. Host shortcuts A/N/S/R, no scoring on reveal/skip, input typing safe
+15. Attract after 30 seconds, touch return, inert background; never interrupts game
+16. Perfect sessions produce Champion and exact set maximum (1290, 1340 or 1390)
+17. Leaderboard top 5 sorted by score and time; date rollover and reset
+18. Sound settings and last team score persist through localStorage API
+19. Storage blocked or corrupt does not prevent game play
+20. User-supplied name rendered as text, not interpreted markup
+21. Install fallback dialog opens and closes
+22. HTML references exist; manifest scopes relative; icons dimensions; RTL and responsive CSS declared
+23. SW install: all 11 required assets precached, skipWaiting called so one reload adopts a new deploy
+24. SW activation: prior app cache removed, unrelated cache retained, clients claimed
+25. SW fetch: cached app, question data, styles, manifest, fonts and icons served with network unavailable
+26. SW offline navigation fallback serves index
 
 METHOD AND LIMITATIONS
 Functional checks run against app.js in Node VM with a simulated DOM, clock,
