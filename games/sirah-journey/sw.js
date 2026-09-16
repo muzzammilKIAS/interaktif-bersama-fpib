@@ -1,6 +1,6 @@
 'use strict';
 // Bump VERSION after changing any file below, then reload with the server running.
-const VERSION='1.6.0';
+const VERSION='1.6.1';
 const PREFIX='sirah-journey-';
 const CACHE=PREFIX+VERSION;
 const ASSETS=['./','./index.html','./styles.css','./app.js','./questions.js','./manifest.webmanifest','./fonts/Baloo2-Variable.woff2','./fonts/NotoNaskhArabic-Variable.woff2','./icons/icon-192.png','./icons/icon-512.png','./icons/icon-maskable-512.png'];

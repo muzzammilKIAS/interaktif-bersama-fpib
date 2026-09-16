@@ -506,7 +506,13 @@ body{
 .checkpoint:first-child::before{display:none}
 .checkpoint small{display:block;margin-top:3px;font-size:10px;letter-spacing:.6px;color:var(--muted);opacity:.85}
 .checkpoint.current small{color:var(--rose-deep);opacity:1}
-.checkpoint i{font-size:22px}
+/* Bulatan checkpoint mesti melukis di ATAS garis penyambung, bukan sebaliknya.
+   Garis::before checkpoint seterusnya melangkau ke kiri (left:-50%) sehingga
+   ke tengah bulatan checkpoint SEBELUMNYA; tanpa z-index nyata di sini, urutan
+   DOM (checkpoint kemudian datang lepas) menyebabkan garis itu menang dan
+   melukis merentasi bulatan sebelumnya. z-index:1 + position:relative
+   memaksa bulatan sentiasa di atas, tidak kira susunan DOM. */
+.checkpoint i{font-size:22px;z-index:1}
 
 /* Papan tanda level yang muncul seketika apabila level baharu bermula */
 .level-toast{
