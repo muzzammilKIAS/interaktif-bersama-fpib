@@ -4,9 +4,30 @@
   const KEY = 'sirah-journey-v1';
   const LIMIT = 240000, FAST = 10000;
   const categories = ['Peristiwa','Tokoh','Tempat','Susun Peristiwa','Nilai & Ibrah'];
-  // Setiap kategori ada ikon dan nama pendek sendiri supaya checkpoint pada peta
-  // perjalanan kelihatan sebagai lencana bergambar, bukan sekadar nombor.
-  const icons = {'Peristiwa':'📜','Tokoh':'👤','Tempat':'🕌','Susun Peristiwa':'🧭','Nilai & Ibrah':'💡','Mystery':'❓'};
+  // Ikon garis nipis (bukan emoji) — satu bahasa visual yang sama di checkpoint,
+  // kad soalan dan skrin mula, supaya kelihatan matang dan bukan bergaya kartun
+  // kebudakan. stroke="currentColor" bermaksud warna diwarisi daripada CSS
+  // induk (contoh: putih apabila checkpoint "current"), jadi tiada CSS berulang
+  // diperlukan setiap keadaan. saiz dikawal oleh font-size induk (1em di CSS).
+  const SVG_OPEN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+  const ICONS = {
+    peristiwa: SVG_OPEN+'<rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M8.5 8.5h7M8.5 12h7M8.5 15.5h4.5"/></svg>',
+    tokoh: SVG_OPEN+'<circle cx="12" cy="8" r="3.4"/><path d="M5.5 20c0-4.2 3-7.2 6.5-7.2s6.5 3 6.5 7.2"/></svg>',
+    tempat: SVG_OPEN+'<circle cx="12" cy="4.2" r=".9" fill="currentColor" stroke="none"/><path d="M12 5.3v1.5"/><path d="M6.5 12.5a5.5 5.5 0 0 1 11 0V14h-11v-1.5z"/><path d="M5 20v-6h14v6"/><path d="M10 20v-3.2a2 2 0 1 1 4 0V20"/><path d="M3.5 20h17"/></svg>',
+    susun: SVG_OPEN+'<path d="M4 17l5-5 4 3 7-8"/><path d="M15 7h5v5"/></svg>',
+    ibrah: SVG_OPEN+'<path d="M9 16.5h6M9.5 19h5"/><path d="M12 3.5a5.5 5.5 0 0 0-3 10.1c.6.4 1 1.1 1 1.9h4c0-.8.4-1.5 1-1.9A5.5 5.5 0 0 0 12 3.5z"/></svg>',
+    mystery: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="9.5" r="3.2"/><path d="M9.8 12.2h4.4l1.6 7.3a1 1 0 0 1-1 1.2H9.2a1 1 0 0 1-1-1.2l1.6-7.3z"/></svg>',
+    level: SVG_OPEN+'<path d="M12 3l8 4.5-8 4.5-8-4.5L12 3z"/><path d="M4 12.5l8 4.5 8-4.5"/><path d="M4 16.5l8 4.5 8-4.5"/></svg>',
+    minit: SVG_OPEN+'<circle cx="12" cy="12" r="8"/><path d="M12 7.5V12l3 2"/></svg>',
+    sepasukan: SVG_OPEN+'<circle cx="8.5" cy="8.5" r="2.6"/><circle cx="16" cy="9.5" r="2.2"/><path d="M3.5 19c0-3.3 2.3-5.7 5-5.7s5 2.4 5 5.7"/><path d="M13.7 14.3c2.2.3 3.8 2.3 3.8 4.7"/></svg>',
+    kaaba: SVG_OPEN+'<rect x="5" y="6" width="14" height="13" rx="1"/><path d="M5 10.5h14" stroke-width="2.2"/><path d="M9 6V4.5M15 6V4.5"/></svg>',
+    trophy: SVG_OPEN+'<path d="M8 4h8v4a4 4 0 0 1-8 0V4z"/><path d="M8 5H5.5A1.5 1.5 0 0 0 4 6.5c0 2 1.5 3.2 3.3 3.4M16 5h2.5A1.5 1.5 0 0 1 20 6.5c0 2-1.5 3.2-3.3 3.4"/><path d="M12 12v3"/><path d="M8.5 19.5h7"/><path d="M10 15.5h4l.8 4h-5.6l.8-4z"/></svg>',
+    star: SVG_OPEN+'<path d="M12 3.5l2.47 5.06 5.53.8-4 3.9.94 5.5L12 16.2l-4.94 2.6.94-5.5-4-3.9 5.53-.8L12 3.5z"/></svg>',
+    leaf: SVG_OPEN+'<path d="M6 18c-1.5-6 2-12.5 12-13.5.7 8.5-3.5 13-12 13.5z"/><path d="M7 17c3-3.5 6-6.5 9.5-10"/></svg>',
+    sprout: SVG_OPEN+'<path d="M12 20v-7"/><path d="M12 13c0-3-2.2-5-6-5 0 3.3 2.2 5.3 6 5z"/><path d="M12 10.5c0-2.5 1.8-4.2 5-4.2 0 2.7-1.8 4.4-5 4.4z"/></svg>',
+  };
+  ICONS['Peristiwa']=ICONS.peristiwa; ICONS['Tokoh']=ICONS.tokoh; ICONS['Tempat']=ICONS.tempat;
+  ICONS['Susun Peristiwa']=ICONS.susun; ICONS['Nilai & Ibrah']=ICONS.ibrah; ICONS['Mystery']=ICONS.mystery;
   const names = {'Peristiwa':'Peristiwa','Tokoh':'Tokoh','Tempat':'Tempat','Susun Peristiwa':'Susun','Nilai & Ibrah':'Ibrah','Mystery':'Misteri'};
   const eras = {'Makkah':'ERA MAKKAH','Hijrah':'TAHUN HIJRAH','Madinah':'ERA MADINAH'};
   const PER_LEVEL = 5;
@@ -87,7 +108,7 @@
         d.className='checkpoint'+(i<session.index||(i===session.index&&locked)?' done':'')+(i===session.index?' current':'');
         d.setAttribute('aria-label',`Checkpoint ${i+1}: ${q.category}, tahun ${q.year} Masihi${i===session.index?', semasa':''}`);
         if(i===session.index)d.setAttribute('aria-current','step');
-        const icon=document.createElement('i');icon.textContent=i<session.index?'✓':icons[q.category]||'✦';
+        const icon=document.createElement('i');icon.innerHTML=i<session.index?'✓':ICONS[q.category]||'';
         const text=document.createElement('span');text.textContent=names[q.category]||q.category;
         const year=document.createElement('small');year.textContent=`${q.year}M`;
         d.append(icon,text,year);row.append(d);
@@ -105,11 +126,11 @@
   function showQuestion(){
     locked=false;order=[];questionTime=Date.now();const q=session.questions[session.index];
     $('score').textContent=session.score;
-    $('category').textContent=`${icons[q.category]||'✦'} ${q.category.toUpperCase()}`;
+    $('category').innerHTML=`${ICONS[q.category]||''}<span>${q.category.toUpperCase()}</span>`;
     $('era-badge').textContent=`${q.year}M · ${eras[q.era]||q.era.toUpperCase()}`;
     $('era-badge').className='era-badge era-'+q.era.toLowerCase();
     $('progress-label').textContent=`LEVEL ${levelOf(session.index)}/${levelCount()} · CHECKPOINT ${String(session.index+1).padStart(2,'0')}/${String(session.questions.length).padStart(2,'0')}`;
-    $('question-icon').textContent=icons[q.category]||'✦';
+    $('question-icon').innerHTML=ICONS[q.category]||'';
     $('point-label').textContent=`${q.points} mata · bonus pantas +25`;
     $('question').textContent=q.question;$('feedback').hidden=true;$('feedback').replaceChildren();$('next').hidden=true;
     $('timeline-hint').hidden=q.type!=='timeline';$('timeline-actions').hidden=q.type!=='timeline';$('submit-order').disabled=true;$('undo-order').disabled=false;
@@ -148,8 +169,8 @@
   function finish(reason){
     if(!session||session.ended)return;session.ended=true;stopTimers();
     const elapsed=Math.min(LIMIT,Date.now()-session.started),correct=session.correct,total=session.questions.length;
-    const levels=correct===total?['بَطَلُ السِّيرَة','SIRAH CHAMPION','🏆']:correct>=Math.ceil(total*.8)?['مُمْتَازٌ','Excellent','🌟']:correct>=Math.ceil(total*.4)?['جَيِّدٌ','Good','🌿']:['مُحَاوَلَةٌ جَيِّدَةٌ','Good Try','🌱'];
-    $('result-icon').textContent=levels[2];
+    const levels=correct===total?['بَطَلُ السِّيرَة','SIRAH CHAMPION','trophy']:correct>=Math.ceil(total*.8)?['مُمْتَازٌ','Excellent','star']:correct>=Math.ceil(total*.4)?['جَيِّدٌ','Good','leaf']:['مُحَاوَلَةٌ جَيِّدَةٌ','Good Try','sprout'];
+    $('result-icon').innerHTML=ICONS[levels[2]];
     $('result-heading').textContent=reason==='timeout'?'MASA TAMAT!':'TAHNIAH!';$('result-team').textContent=session.team;$('performance-ar').textContent=levels[0];$('performance').textContent=levels[1];$('result-score').textContent=session.score;$('result-max').textContent=`daripada ${session.maxScore} mata untuk set ini`;
     $('result-correct').textContent=`${correct} / ${total}`;$('result-accuracy').textContent=`${Math.round(correct*100/total)}%`;$('result-time').textContent=formatTime(elapsed);$('result-detail').textContent=`${session.players} peserta · ${levelCount()} level × ${PER_LEVEL} soalan · ${session.answered} soalan dijawab`;
     const entries=leaders();entries.push({team:session.team,score:session.score,time:elapsed});entries.sort((a,b)=>b.score-a.score||a.time-b.time);save(':leaders',{day:dayKey(),entries:entries.slice(0,5)});save(':score',{team:session.team,score:session.score,correct,elapsed,complete:true});

@@ -127,7 +127,7 @@ main{max-width:1360px;margin:0 auto;padding:38px 40px}
   font-weight:500;text-align:left;font-size:clamp(58px,6vw,90px);line-height:1.55;
   margin:0 0 6px;color:var(--rose-deep);
 }
-.intro h2{font-size:clamp(34px,3.6vw,55px);font-weight:800;letter-spacing:-1.5px;line-height:1.04;margin:0}
+.intro h2{font-size:clamp(34px,3.6vw,55px);font-weight:700;letter-spacing:-1px;line-height:1.04;margin:0}
 .intro h2 span{color:var(--matcha-deep)}
 .subtitle{color:var(--muted);font-size:19px;line-height:1.8;margin:22px 0}
 
@@ -259,7 +259,8 @@ footer{
 
 .question-panel{max-width:1100px;margin:auto;padding:32px 40px}
 .question-meta{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:14px;color:var(--muted)}
-.category{border-radius:999px;background:var(--matcha-soft);padding:8px 16px;font-weight:700;color:var(--matcha-ink)}
+.category{display:inline-flex;align-items:center;gap:7px;border-radius:999px;background:var(--white);border:1.5px solid var(--matcha);padding:7px 15px 7px 11px;font-weight:700;color:var(--matcha-ink)}
+.category svg{width:15px;height:15px;flex-shrink:0}
 .group-ar{text-align:center;font-size:27px;margin-top:12px}
 .discuss{text-align:center;font-size:12px;letter-spacing:1.5px;color:var(--muted);margin:0 0 12px}
 #question{font-size:clamp(25px,2.8vw,36px);line-height:1.4;text-align:center;margin:12px auto 26px;max-width:920px;outline:none}
@@ -316,7 +317,7 @@ footer{
 .total{display:flex;flex-direction:column;align-items:center;margin:24px 0}
 .total>span{font-size:13px;letter-spacing:2px;color:var(--muted)}
 .total strong{
-  font-size:100px;letter-spacing:-6px;line-height:1.15;font-weight:800;
+  font-size:100px;letter-spacing:-4px;line-height:1.15;font-weight:700;
   background:linear-gradient(140deg,var(--rose) 0%,var(--rose-deep) 45%,var(--matcha-deep) 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
@@ -495,7 +496,7 @@ body{
 .level-tag{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:11px;letter-spacing:1.6px}
 .level-tag b{
   padding:5px 12px;border-radius:999px;font-size:11px;letter-spacing:1.4px;
-  background:var(--blush);color:var(--rose-ink);
+  background:var(--white);color:var(--rose-ink);border:1.5px solid var(--rose);
 }
 .journey-level.active .level-tag b{background:linear-gradient(140deg,var(--rose),var(--rose-deep));color:var(--white)}
 .journey-level.cleared .level-tag b{background:var(--matcha-soft);color:var(--matcha-ink)}
@@ -529,20 +530,29 @@ body{
 .meta-gap{flex:1;min-width:0}
 .progress-label{font-size:12px;letter-spacing:1.2px;color:var(--muted);font-weight:700}
 .era-badge{
-  border-radius:999px;padding:8px 15px;font-size:12px;font-weight:700;letter-spacing:1px;
-  background:var(--blush);color:var(--rose-ink);border:1px solid #f0d3d6;
+  border-radius:999px;padding:7px 14px;font-size:12px;font-weight:700;letter-spacing:1px;
+  background:var(--white);color:var(--rose-ink);border:1.5px solid var(--rose);
 }
-.era-badge.era-madinah{background:var(--matcha-soft);color:var(--matcha-ink);border-color:#d5e5d1}
-.era-badge.era-hijrah{background:#fbf0dd;color:#8a5a1c;border-color:#eedcb8}
+.era-badge.era-madinah{color:var(--matcha-ink);border-color:var(--matcha)}
+.era-badge.era-hijrah{color:#8a5a1c;border-color:#d6b06e}
 .question-icon{
-  width:66px;height:66px;margin:18px auto 0;border-radius:24px;
-  display:flex;align-items:center;justify-content:center;font-size:32px;line-height:1;
+  width:60px;height:60px;margin:18px auto 0;border-radius:20px;
+  display:flex;align-items:center;justify-content:center;color:var(--rose-deep);
   background:linear-gradient(140deg,var(--blush) 0%,var(--matcha-soft) 100%);
   box-shadow:var(--shadow-sm);
 }
+.question-icon svg{width:28px;height:28px}
 
 /* Keputusan: lencana pencapaian */
-.result-icon{font-size:56px;line-height:1;margin-bottom:6px}
+.result-icon{display:flex;justify-content:center;color:var(--rose-deep);margin-bottom:10px}
+.result-icon svg{width:52px;height:52px}
+
+/* Ikon garis (bukan emoji): saiz mengikut font-size bekas induknya (1em) supaya
+   satu peraturan sahaja cukup untuk semua breakpoint sedia ada di atas. */
+.checkpoint i svg,.facts i svg,.journey-teaser b svg{width:1em;height:1em;display:block}
+.facts i{display:inline-flex;align-items:center;justify-content:center}
+.journey-teaser b{display:inline-flex}
+.category svg{color:inherit}
 
 @media(max-width:960px){
   .hero-art{max-width:440px;margin-top:22px}
@@ -560,7 +570,9 @@ body{
   .level-tag i{display:none}
   .checkpoint i{font-size:18px}
   .checkpoint small{font-size:9px}
-  .question-icon{width:54px;height:54px;font-size:26px;border-radius:18px;margin-top:14px}
+  .question-icon{width:48px;height:48px;border-radius:16px;margin-top:14px}
+  .question-icon svg{width:22px;height:22px}
+  .result-icon svg{width:40px;height:40px}
   .era-badge,.progress-label{font-size:11px;padding:6px 11px}
   .progress-label{padding:0}
   .level-toast{font-size:11px;letter-spacing:1.2px;padding:10px 12px}
